@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <div class="messages">
+      <% messages.forEach(message => { %>
+      <div class="message-card">
+        <p><span class="user"><%= message.user %></span> says</p>
+        <p class="date"><%= message.added.toDateString() %></p>
+
+        <p><%= message.text %></p>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
