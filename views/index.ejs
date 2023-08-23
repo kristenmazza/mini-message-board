@@ -7,10 +7,20 @@
   <body>
     <h1><%= title %></h1>
     <div class="messages">
+      <button
+        onClick="location.href='/new'"
+        type="button"
+        class="newMessageButton"
+      >
+        New Message
+      </button>
+
       <% messages.forEach(message => { %>
       <div class="message-card">
         <p><span class="user"><%= message.user %></span> says</p>
-        <p class="date"><%= message.added.toDateString() %></p>
+        <p class="date">
+          <%= message.format(message.added, "MM/dd/yyyy 'at' h:mm a") %>
+        </p>
 
         <p><%= message.text %></p>
       </div>

@@ -3,26 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>Mini Messageboard</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <h1>Mini Messageboard</h1>
+    <h2><%= title %></h2>
     <div class="form-container">
       <form method="POST" action="/new">
         <div class="input-group">
           <label for="name"
             >Name <span class="required">(required)</span></label
           >
-          <input type="text" id="name" required />
+          <input type="text" name="name" id="name" required />
         </div>
         <div class="input-group">
           <label for="message"
             >Message <span class="required">(required)</span></label
           >
-          <textarea id="message" required></textarea>
+          <textarea id="message" name="message" required></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit">Submit</button>
       </form>
     </div>
   </body>
