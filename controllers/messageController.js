@@ -42,7 +42,7 @@ exports.message_list = asyncHandler(async (req, res, next) => {
   const allMessages = await Message.find({}).exec();
 
   res.render('index', {
-    title: 'Mini Messageboard',
+    title: 'Mini Message Board',
     message_list: allMessages,
   });
 });
