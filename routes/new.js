@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { messages } = require('./index');
+const message_controller = require('../controllers/messageController');
 
 /* GET new message page. */
-router.get('/new', function (req, res, next) {
-  res.render('form', { title: 'New Message' });
-});
+router.get('/', message_controller.message_create_get);
 
 module.exports = router;

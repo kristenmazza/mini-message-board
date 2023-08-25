@@ -15,16 +15,13 @@
         New Message
       </button>
 
-      <% messages.forEach(message => { %>
+      <% for (let i = 0; i < message_list.length; i++) { %>
       <div class="message-card">
-        <p><span class="user"><%= message.user %></span> says</p>
-        <p class="date">
-          <%= message.format(message.added, "MM/dd/yyyy 'at' h:mm a") %>
-        </p>
-
-        <p><%= message.text %></p>
+        <p><span class="user"><%= message_list[i].user %></span> says</p>
+        <p class="date"><%= message_list[i].date__formatted %></p>
+        <p><%= message_list[i].text %></p>
       </div>
-      <% }) %>
+      <% } %>
     </div>
   </body>
 </html>

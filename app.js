@@ -1,13 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-var newMessageRouter = require('./routes/new');
+const indexRouter = require('./routes/index');
+const newMessageRouter = require('./routes/new');
 
-var app = express();
+const app = express();
+
+require('dotenv').config();
+
+// Globally opt into filtering by properties that aren't in the schema.
+// Included because it removes prepatory warnings for Mongoose 7.
+mongoose.set('strictQuery', false);
+
+// Wait for database to connect, logging an error if there is a problem.
+main().catch((err) => console.log(err));
+async function main() {
+  await mongoose.connect(process.env.MONGODB_URI);
+}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
-app.use(newMessageRouter);
+app.use('/new', newMessageRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
